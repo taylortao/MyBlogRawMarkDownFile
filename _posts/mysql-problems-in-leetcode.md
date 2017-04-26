@@ -1,7 +1,10 @@
 ---
 title: mysql problems in leetcode
 date: 2017-04-24 17:29:44
+categories:
+ - IT Technology
 tags:
+ - MySQL
 ---
 
 ### Questions and answers
