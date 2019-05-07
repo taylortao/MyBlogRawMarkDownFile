@@ -18,7 +18,6 @@ widgets:
 - links
 ##- douban
 - rss
-- weibo
   ## provide eight widgets:github-card,category,tag,rss,archive,tagcloud,links,weibo
 
 
@@ -84,7 +83,7 @@ links:
   My old blog: http://blog.csdn.net/taylor_tao
 
 #### Comment
-duoshuo_shortname: taylortao   ## e.g. wuchong   your duoshuo short name.
+duoshuo_shortname:   ## e.g. wuchong   your duoshuo short name.
 disqus_shortname:     ## e.g. wuchong   your disqus short name.
 
 #### Share button
