@@ -58,18 +58,18 @@ creative_commons: none
 author:
   intro_line1:  "Hello, I'm Tingting Tao."
   intro_line2:  "Welcome to my blog, my home!"
-  weibo: bjtaotailang     ## e.g. wuchong1014 or 2176287895 for http://weibo.com/2176287895
-  weibo_verifier: d3dc959c    ## e.g. b3593ceb Your weibo-show widget verifier ,if you use weibo-show it is needed.
-  tsina: 1749097660     ## e.g. 2176287895  Your weibo ID,It will be used in share button.
-  douban:     ## e.g. wuchong1014 or your id for https://www.douban.com/people/wuchong1014
-  zhihu:      ## e.g. jark  for http://www.zhihu.com/people/jark
-  email: 981489059@qq.com     ## e.g. imjark@gmail.com
-  twitter:    ## e.g. jarkwu for https://twitter.com/jarkwu
-  github: taylortao     ## e.g. wuchong for https://github.com/wuchong
-  facebook: tao.tingting   ## e.g. imjark for https://facebook.com/imjark
-  linkedin:   ## e.g. wuchong1014 for https://www.linkedin.com/in/wuchong1014
-  google_plus:    ## e.g. "111190881341800841449" for https://plus.google.com/u/0/111190881341800841449, the "" is needed!
-  stackoverflow:  ## e.g. 3222790 for http://stackoverflow.com/users/3222790/jark
+  weibo: bjtaotailang
+  weibo_verifier: d3dc959c
+  tsina: 1749097660
+  douban:
+  zhihu:
+  email: taylortao.tingting@gmail.com
+  twitter:  
+  github: taylortao
+  facebook: tao.tingting
+  linkedin:  
+  google_plus:   
+  stackoverflow: 
 ## if you set them, the corresponding  share button will show on the footer
 
 #### Toc
