@@ -25,10 +25,19 @@ Test and Debug local: `hexo server`
 And then browse: http://localhost:4000
 
 Add a new blog post: `hexo new "Hello Hexo”`
+
+Or generate through github repository
+
+```shell
+git clone https://github.com/taylortao/MyBlogRawMarkDownFile.git
+rm -rf source
+mv MyBlogRawMarkDownFile source
+```
  
 Support feed and sitemap
 `$ npm install hexo-generator-feed --save`
 `$ npm install hexo-generator-sitemap --save`
+
 
 ### Set deploy destination to GitHub
 
