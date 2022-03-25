@@ -13,5 +13,3 @@ I am passionate about IT techniques, currently obsessed with distributed systems
 In my free time I like to go to gym, doing cardio or weight training, my goal is always be fit enough to run 10k. Go healthy!
 Apart from that, I am also keen to travel to different places.
 Keep going! you go girl!
-
-![southernmost place I've ever seen](me.jpg)
