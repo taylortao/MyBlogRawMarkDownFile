@@ -4,7 +4,7 @@ date: 2020-01-18 20:08:00
 categories:
  - IT Technology
 tags:
- - System design
+ - SystemDesign
 ---
 
 This article is about the process of defining archiecture, components, modules, interfaces and data for a system to satisfy specified requirement.

@@ -29,9 +29,17 @@ Add a new blog post: `hexo new "Hello Hexo”`
 Or generate through github repository
 
 ```shell
-git clone https://github.com/taylortao/MyBlogRawMarkDownFile.git
-rm -rf source
-mv MyBlogRawMarkDownFile source
+cd .. && git clone https://github.com/taylortao/MyBlogRawMarkDownFile.git
+
+cd blog/source
+ln -sf ../../MyBlogRawMarkDownFile/about about
+rm -rf _posts && ln -sf ../../MyBlogRawMarkDownFile/_posts _posts
+ln -sf ../MyBlogRawMarkDownFile/hexoConfig/_config.yml _config.yml
+
+// install jacman theme
+git clone https://github.com/wuchong/jacman.git themes/jacman
+cd themes/jacman && ln -sf ../../../MyBlogRawMarkDownFile/jacmanConfig/_config.yml _config.yml
+
 ```
  
 Support feed and sitemap
