@@ -110,6 +110,10 @@ IOSP for SSD: 3000 to 40000 while for HDD, it is around 55-180.
 Throughput for SSD: up to 2000 MBps, HDD maybe couple hundreds MBps.
 SSD: solid state drive, HDD: hard disk drive
 
+Anecdotal data
+- HDD: Seek time: 4-9 msec
+- SSD: Seek time: 0.08-0.16 msec
+
 
 #### Durability - Erasure coding
 Erasure coding: use the magic of math (Galois fields and Reed Solomon encodings), we can split the object blob into smaller shards, and erasure code them such that we can reconstruct the blob with a subset of the shards. 
@@ -129,6 +133,15 @@ Below is an example of Reed-Solomon encoding with four data units and two parity
 #### Data integrity - checksum
 We normally guarantee data integrity by calculating a checksum and store it with data.
 To calculate a checksum, a cryptographic hash function like MD5, SHA-1, SHA-256, or SHA-512 is used. The hash function takes the input data and produces checksum, and store checksum together with data. when client retriving data, it uses checksum to verify the received data is not corrupted. otherwise it should retrieve data from another replica.
+
+Anecdotal data
+|Checksum algorithm|Compute time(64KB)|
+|--|--|
+|SHA256|35 microseconds|
+|MD5|24 microseconds|
+|SHA1|19 microseconds|
+|CRC32|1.1 microseconds|
+|CRC32C|1.0 microseconds|
 
 
 #### Garbage collecction - compaction
