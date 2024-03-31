@@ -45,6 +45,50 @@ public class ListNode {
 String str = "hello";
 int len = str.length(); // 5
 Char c = str.charAt(0); // 'h'
+
+// sub string
+"String".substring(int beginIndexInclusive, int endIndexExclusive);
+
+"T".repeat(3); // TTT
+```
+
+### StringBuilder
+
+```java
+// initialize with String
+StringBuilder sb = new StringBuilder("String");
+
+// append
+sb.append("String"); // StringString
+
+// insert
+sb.insert(0, Integer.toString(123)); // 123StringString
+sb.insert(3, "s"); // 123sStringString
+
+// delete
+sb.deleteCharAt(4); // 123stringString
+
+// replace
+sb.setCharAt(9, 's'); // 123stringstring
+
+sb.toString();
+```
+
+#### Two ways to copy string 
+
+```java
+String original = "Original";
+String copiedString1 = String.valueOf(original);
+String copiedString2 = new StringBuilder(original).toString();
+```
+
+####
+
+```java
+String sentence = "Hello world hello again";
+List<String> splits = Arrays.asList(sentence.split("\\s+"));
+Collections.reverse(splits);
+String.join(" ", splits); // again hello world Hello
 ```
 
 ### Containers
@@ -77,6 +121,16 @@ Vectors are synchronized, ArrayLists are not.
 ```java
 List<String> list = Arrays.asList("C", "C++", "Java");
 String[] array = list.toArray();
+```
+
+#### Copy LinkedList
+
+```java
+LinkedList<String> list = new LinkedList<>();
+list.add("test");
+
+List<Integer> clonedList = new LinkedList<Integer>();
+clonedList = (LinkedList) list.clone();
 ```
 
 
