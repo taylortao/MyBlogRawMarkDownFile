@@ -192,6 +192,8 @@ int peekTop = pq.peek(); // 9
 pq.isEmpty(); // false
 pq.remove(7); // [9, 3, 5, 1]
 int size = pq.size(); // 4
+
+PriorityQueue<String> pq = new PriorityQueue<String>(Collections.reverseOrder(Comparator.comparing(String::length));
 ```
 
 #### HashSet HashMap HashTable
@@ -236,6 +238,8 @@ set.higher(3); // 5
 ```
 
 #### TreeMap
+
+Under the hood, it is implemented by a red-black tree structure.
 
 ```java
 TreeMap<Integer, Integer> map = new TreeMap();
@@ -313,6 +317,22 @@ List<TestClass> list = new LinkedList<>(List.of(
 
 Collections.sort(list, new SortByKey()); // [1, 2, 3, 7, 8]
 // [1 -> a, 3 -> aaa, 6 -> b, 8 -> ddd, 11 -> cc]
-
 ```
 
+Another way to implement, which might be easier
+
+```java
+class TestClass implements Comparable<TestClass> {
+    int sortKey;
+    String otherProps;
+    public TestClass(int k, String v) {
+        sortKey = k;
+        otherProps = v;
+    }
+
+    @Override
+    public int compareTo(TestClass o) {
+        return Integer.compare(sortKey, o.sortKey);
+    }
+}
+```

@@ -63,6 +63,20 @@ Types:
 (2) Multi leader replication: writes can go to a small subset of leader instances and reads can come from any instance
 (3) Leaderless replication: writes go to all instances, reads come from all instances (for example: quorum)
 
+### Replication consistency
+Strong Consistency: read sees all previous writes, which means a read operation returns the value that was last written for a given object.
+
+Eventual Consistency: read sees subset of previous writes, it is the weakest of the guarantees.
+
+Consistent Prefix: read sees initial sequence of writes, it is guaranteed to observe an ordered sequence of writes starting with
+the first write to a data object. this is similar to "snapshot isolation" consistency
+
+Bounded Staleness: read sees all “old” writes, and staleness is defined by a time period T, say 5 minutes.
+
+Monotonic Reads: read sees increasing subset of writes, it is often called a "session guarantee".
+
+Read My Writes: read sees all writes performed by reader.
+
 ## Failure detection
 Lease: a time-bound leases to grant clients rights on resources.
 
@@ -137,3 +151,39 @@ Such as: chat messages, user activity tracking, etc.
 
 Pitfalls: 
 Lack of strong consistency, lack of support of data relationships. lack of global secondary indexes.
+
+
+## Time Series Databases
+Access patterns - Write
+- write-once, read many times
+- write to recent time interval, adjacent values are likely similar
+- write generally goes to the same timestamp/source
+- data inserts corresponding to a range of time which is likely to be most recent timestamp
+
+Acess patterns - Read
+- read statistic data, which makes a column oriented database more suitable, which allows fast aggregations and column based compression to reduce space
+- generally we only need one or two columns at a time for graphing
+
+Acess patterns - Delete
+- delete time data older than some date prior to the present
+- likely be able to do bulk delete based on timespan.
+
+Index design: 
+- (1) a compound index with a timestamp + data source ID combination
+- (2) better to treat time interval and source combination into smaller chunk table (as opposed to big table) 
+
+which has benefits of:
+From: a compound index with a timestamp + data source ID combination
+- it allows writes from the same data source over similar intervals of time to be on the same node
+- generally speaking all timestamps should be sequential and similar and should be able to be compressed
+
+From better to treat time interval and source combination into smaller chunk table (as opposed to big table) 
+- have all column values in one file reduces disk I/O and allows faster aggregations of column data.
+- improve performance by caching their index in memory, otherwise we would have many more relevant index pages that would occasionally have to be swapped in and out of memory which incurs significant processing overhead
+- greatly optimize on the performance of deletes
+ - for LSM tree, we can just delete the corresponding chunk tables/index, as opposed to writing all of deletes to index files and waiting for compaction
+ - for B-trees, we can just delete the appropriate index as opposed to going through the B-tree many times and setting loads of pointers to null
+
+Use case: logs, sensors, metrics etc.
+
+Examples: InfluxDB, TimescaleDB, etc.
