@@ -5,6 +5,7 @@ categories:
  - IT Technology
 tags:
  - Storage
+ - SystemDesign
 ---
 
 ## Block File and Object storage

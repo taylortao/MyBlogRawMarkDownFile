@@ -52,6 +52,24 @@ Char c = str.charAt(0); // 'h'
 "T".repeat(3); // TTT
 ```
 
+### Number
+
+```java
+Integer.toBinaryString(15) // "1111" 
+Integer.parseInt("1111", 2) // 15
+
+BigInteger n = BigInteger.ONE;
+n.multiply(BigInteger.valueOf(123));
+n.divide(BigInteger.valueOf(123));
+```
+
+Angle could be measured in degrees or radians. 
+`atan` stands for "arc tangent." It is the inverse function of tangent - this means it undoes the tangent function. So `atan(tan(30)) = 30`.
+
+`atan(delta-y/delta-x) == atan2(delta-y, delta-x)` // be mindful delta x could be zero
+`Math.atan(1) == Math.PI / 4.0 == Math.atan2(1, 1)`
+
+
 ### StringBuilder
 
 ```java
@@ -70,6 +88,8 @@ sb.deleteCharAt(4); // 123stringString
 
 // replace
 sb.setCharAt(9, 's'); // 123stringstring
+
+sb.reverse(); // reverse all chars
 
 sb.toString();
 ```
@@ -207,6 +227,10 @@ HashSet<Integer> set = new HashSet<>();
 set.add(1); set.add(3); set.add(9);
 set.isEmpty(); // false
 set.contains(9); // true
+
+for (Object num : set) {}
+
+new ArrayList(set); // convert to arraylist
 ```
 
 HashMap:

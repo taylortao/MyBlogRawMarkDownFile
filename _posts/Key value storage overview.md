@@ -4,7 +4,9 @@ date: 2024-04-26 13:37:29
 categories:
  - IT Technology
 tags:
- - Key value storage
+ - SystemDesign
+ - Storage
+ - Database
 ---
 
 # High level components
@@ -62,6 +64,8 @@ Types:
 (1) Single leader replication: all writes go to one instance, reads come from any instance
 (2) Multi leader replication: writes can go to a small subset of leader instances and reads can come from any instance
 (3) Leaderless replication: writes go to all instances, reads come from all instances (for example: quorum)
+
+CRDT: Conflict-Free Replicated Data Type (CRDT) is a data structure which allows multiple replicas to be updated independently and concurrently without the need for synchronization. it is normally implemented by vectors. 
 
 ### Replication consistency
 Strong Consistency: read sees all previous writes, which means a read operation returns the value that was last written for a given object.
