@@ -33,6 +33,7 @@ expected number of requests per second, throughput per second, or user traffic f
 
 (2) Storage estimation
 amount of storage required to handle
+10^3 -> K, 10^6(million) -> M, 10^9(billion) -> G
 
 (3) Bandwidth estimation
 determine the network bandwidth needed to support the expected traffic and data transfer.
