@@ -243,6 +243,9 @@ map.containsKey(2); // false
 map.put(1, 10);
 map.get(1); // 10
 map.get(10); // null
+
+map.computeIfAbsent(9, k -> new LinkedList<>()); // if the key is not already associated with a value, associates the key with the computed value.
+map.getOrDefault(9, new LinkedList<>()); // if key not exist return the default value
 ```
 
 
@@ -360,3 +363,71 @@ class TestClass implements Comparable<TestClass> {
     }
 }
 ```
+
+### Java stream
+
+```java
+List<String> fromList = Arrays.asList("zza", "bb", "ccc", "dddd");
+List<String> result = fromList.stream()
+    .filter((item) -> item.length() > 0) // [zza, bb, ccc, dddd]
+    .sorted((s1, s2) -> s1.charAt(0) - s2.charAt(0)) // [bb, ccc, dddd, zza]
+    .map(s -> s.replace("a", "A")) //[bb, ccc, dddd, zzA]
+    .collect(Collectors.toList());
+
+Optional<String> reducedResult = result.stream()
+    .reduce((s1, s2) -> String.format("%s:%s", s1, s2)); // bb:ccc:dddd:zzA
+
+String[] fromArray = {"a", "b", "c"};
+long count = Arrays.stream(fromArray).count(); // 3
+```
+
+### Java IO
+
+Byte Streams, file content: test
+
+```java
+try (
+    InputStream fis = new FileInputStream(filePathInput);
+    OutputStream fos = new FileOutputStream(filePathOutput)
+) {
+    int content;
+    while ((content = fis.read()) != -1) {
+        System.out.print((char) content);
+        System.out.print(","); // t,e,s,t,
+    }
+    fos.write("hello".getBytes());
+} catch (IOException e) {
+}
+```
+
+I/O operations are very performance-intensive. Buffered streams load data into a buffer and read/write multiple bytes at once, thereby avoiding frequent I/O operations and improving the efficiency of stream transmission. 
+
+Byte buffered streams use the decorator pattern to enhance the functionality of the InputStream and OutputStream
+
+```java
+try (BufferedReader reader = new BufferedReader(new FileReader(filePathInput));
+     BufferedWriter writer = new BufferedWriter(new FileWriter(filePathOutput))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        writer.write(line);
+        writer.newLine();
+    }
+} catch (IOException e) {
+}
+```
+
+Character streams use Unicode encoding by default, but we can customize the encoding through the constructor. 
+- UTF-8: English characters: 1 byte, Chinese characters: 3 bytes. 
+- Unicode: Any character: 2 bytes. 
+- GBK: English characters: 1 byte, Chinese characters: 2 bytes.
+
+```java
+try (FileReader fileReader = new FileReader(filePathInput, StandardCharsets.UTF_8);) {
+    int content;
+    while ((content = fileReader.read()) != -1) {
+        System.out.print((char) content);
+    }
+} catch (IOException e) {
+}
+```
+
